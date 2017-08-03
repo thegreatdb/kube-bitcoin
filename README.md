@@ -8,13 +8,13 @@ Runs a bitcoin full node in a kubernetes cluster.
 First provision a disk:
 
 ```console
-  gcloud compute disks create --size=300GB bitcoin-data
+gcloud compute disks create --size=750GB bitcoin-data
 ```
 
 Next create a secret file from the template:
 
 ```console
-  cp deploy/bitcoin-secret.yml.template deploy/bitcoin-secret.yml
+cp deploy/bitcoin-secret.yml.template deploy/bitcoin-secret.yml
 ```
 
 Then find the base64 encoding of the username and password you want to use:

@@ -23,7 +23,7 @@ spec:
             secretKeyRef:
               name: bitcoin-secret
               key: rpcpass
-        image: amacneil/bitcoin:0.12.0
+        image: amacneil/bitcoin:0.14.2
         name: bitcoin
         volumeMounts:
           - mountPath: /data

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bitcoin-debug
+spec:
+  containers:
+  - env:
+    - name: BITCOIN_RPC_USER
+      valueFrom:
+        secretKeyRef:
+          name: bitcoin-secret
+          key: rpcuser
+    - name: BITCOIN_RPC_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: bitcoin-secret
+          key: rpcpass
+    image: ubuntu:17.10
+    name: bitcoin-debug
+    volumeMounts:
+      - mountPath: /data
+        name: bitcoin-data
+  restartPolicy: Always
+  volumes:
+    - name: bitcoin-data
+      gcePersistentDisk:
+        pdName: bitcoin-data
+        fsType: ext4

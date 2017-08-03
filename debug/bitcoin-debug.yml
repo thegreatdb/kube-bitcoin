@@ -15,7 +15,8 @@ spec:
         secretKeyRef:
           name: bitcoin-secret
           key: rpcpass
-    image: ubuntu:17.10
+    image: ubuntu
+    args: ["sleep", "1000000"]
     name: bitcoin-debug
     volumeMounts:
       - mountPath: /data

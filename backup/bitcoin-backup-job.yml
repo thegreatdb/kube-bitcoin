@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: bitcoin-backup-job
+spec:
+  template:
+    metadata:
+      name: bitcoin-backup-job
+    spec:
+      containers:
+      - name: cloud-sdk
+        image: google/cloud-sdk
+        command: ["gcloud"]
+        args: ["compute", "disks", "snapshot", "bitcoin-data", "--zone", "us-central1-c"]
+      restartPolicy: OnFailure

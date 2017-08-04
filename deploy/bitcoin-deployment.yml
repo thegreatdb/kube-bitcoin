@@ -12,7 +12,9 @@ spec:
         app: bitcoin
     spec:
       containers:
-      - env:
+      - name: bitcoin
+        image: amacneil/bitcoin:0.14.2
+        env:
         - name: BITCOIN_RPC_USER
           valueFrom:
             secretKeyRef:
@@ -23,8 +25,6 @@ spec:
             secretKeyRef:
               name: bitcoin-secret
               key: rpcpass
-        image: amacneil/bitcoin:0.14.2
-        name: bitcoin
         volumeMounts:
           - mountPath: /data
             name: bitcoin-data

@@ -1,0 +1,16 @@
+apiVersion: batch/v2alpha1
+kind: CronJob
+metadata:
+  name: bitcoin-backup-cronjob
+spec:
+  schedule: "@daily"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cloud-sdk
+            image: google/cloud-sdk
+            command: ["gcloud"]
+            args: ["compute", "disks", "snapshot", "bitcoin-data", "--zone", "us-central1-c"]
+          restartPolicy: OnFailure

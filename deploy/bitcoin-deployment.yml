@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: bitcoin
-        image: amacneil/bitcoin:0.14.2
+        image: amacneil/bitcoin:0.14.2-uasfsegwit1.0
         env:
         - name: BITCOIN_RPC_USER
           valueFrom:
